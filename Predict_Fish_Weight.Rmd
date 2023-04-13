@@ -55,6 +55,14 @@ summary(best.model)
 ```
 The best model and the best two regressor model from the chart above is Height and Width. The adjusted R squared for this model is the highest out of the others at 0.94 R-squared. 
 
+## Five Element Perch Model
+```{r}
+best.Perch_model <- lm(Weight~Height+Width,data=Perch)
+five_element_perch_model <- lm(Weight~.,data=Perch)
+anova(best.Perch_model, five_element_perch_model)
+```
+According to the statistics, there is no significant difference between the two models. The P-value is almost 1, meaning they're not that different.
+
 ## Pike
 
 ### Best Models
