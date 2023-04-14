@@ -85,6 +85,11 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
 ### Best Two regressor model
+```{r}
+best.model <- lm(Weight~Length1+Length3,data=Pike)
+summary(best.model)
+```
+The best two regressor model from the chart above is Length1 and Length3. It is not the best model in this case as the model's P-value which is 0.9649, which is lower than the other models so it is the fourth best model.
 
 ## Roach
 
