@@ -64,9 +64,26 @@ anova(best.Perch_model, five_element_perch_model)
 According to the statistics, there is no significant difference between the two models. The P-value is almost 1, meaning they're not that different.
 
 ## Pike
-
+```{r}
+Pike <- filter(fish, Species == "Pike")
+Pike <- select(Pike, -(Species))
+```
 ### Best Models
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Pike,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
 
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
 ### Best Two regressor model
 
 ## Roach
