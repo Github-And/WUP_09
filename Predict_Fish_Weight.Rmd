@@ -122,5 +122,11 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2")
 ```
 ### Best Two regressor model
+```{r}
+best.model <- lm(Weight~Length3+Width,data=Roach)
+summary(best.model)
+```
+According to the graph and data, the best model and the best two regressor model is Length3 and Width. The adjusted R squared for this model is the highest out of the others at 0.8482 R-squared. 
+
 
 ## Final Summary Statements
