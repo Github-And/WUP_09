@@ -84,12 +84,21 @@ as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
+
 ### Best Two regressor model
 ```{r}
 best.model <- lm(Weight~Length1+Length3,data=Pike)
 summary(best.model)
 ```
-The best two regressor model from the chart above is Length1 and Length3. It is not the best model in this case as the model's P-value which is 0.9649, which is lower than the other models so it is the fourth best model.
+The best two regressor model from the chart above is Length1 and Length3. It is not the best model in this case as the model's adjusted R-squared is 0.9649, which is lower than the other models so it is the fourth best model.
+
+## Five Element Pike Model
+```{r}
+best.Pike_model <- lm(Weight~Length1+Length3,data=Pike)
+five_element_pike_model <- lm(Weight~.,data=Pike)
+anova(best.Pike_model, five_element_pike_model)
+```
+The five element model is our best model based on these statistics. It is significant below the .05 level.
 
 ## Roach
 
