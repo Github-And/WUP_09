@@ -61,7 +61,7 @@ best.Perch_model <- lm(Weight~Height+Width,data=Perch)
 five_element_perch_model <- lm(Weight~.,data=Perch)
 anova(best.Perch_model, five_element_perch_model)
 ```
-According to the statistics, there is no significant difference between the two models. The P-value is almost 1, meaning they're not that different.
+According to the statistics, there is no significant difference between the two models. The P-value is almost 1 and the residual sum of squares is slightly below the two model, meaning they're not that different.
 
 ## Pike
 ```{r}
@@ -98,7 +98,7 @@ best.Pike_model <- lm(Weight~Length1+Length3,data=Pike)
 five_element_pike_model <- lm(Weight~.,data=Pike)
 anova(best.Pike_model, five_element_pike_model)
 ```
-The five element model is our best model based on these statistics. It is significant below the .05 level.
+The five element model is our best model based on these statistics. The residual sum of squares for the five element model is extraordinarily higher than the two element model. It is significant below the .05 level.
 
 ## Roach
 ```{r}
@@ -128,5 +128,12 @@ summary(best.model)
 ```
 According to the graph and data, the best model and the best two regressor model is Length3 and Width. The adjusted R squared for this model is the highest out of the others at 0.8482 R-squared. 
 
+## Five Element Roach Model
+```{r}
+best.Roach_model <- lm(Weight~Length3+Width,data=Roach)
+five_element_roach_model <- lm(Weight~.,data=Roach)
+anova(best.Roach_model, five_element_roach_model)
+```
+For this data, we are comparing the two element model and the five element model. The P-value is 0.9 and the R-sum of squares for the five element model is slightly below than the two element model. In conclusion, there is hardly any difference between the models with the two element model being better.
 
 ## Final Summary Statements
